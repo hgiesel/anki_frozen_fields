@@ -1,0 +1,27 @@
+.fname {
+  pointer-events: none;
+}
+
+.fname::before {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
+
+  content: " ";
+  background-image: url('../icons/flake_black.png');
+  background-size: 100% 100%;
+  pointer-events: all;
+}
+
+.nightMode .fname::before {
+  background-image: url('../icons/flake_white.png');
+}
+
+.night_mode .fname::before {
+  background-image: url('../icons/flake_white.png');
+}
+
+.fname.is-frozen::before {
+  background-image: url('../icons/flake_blue.png');
+}
