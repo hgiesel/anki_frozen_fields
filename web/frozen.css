@@ -6,9 +6,10 @@
   display: inline-block;
   width: 14px;
   height: 14px;
-  margin-right: 4px;
 
-  content: " ";
+  margin-right: 5px;
+
+  content: "  ";
   background-image: url('../icons/flake_black.png');
   background-size: 100% 100%;
   pointer-events: all;
