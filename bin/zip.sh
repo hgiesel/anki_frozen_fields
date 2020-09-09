@@ -11,6 +11,8 @@ fi
 
 cd "$DIR"
 
+"$DIR/bin/compile.sh"
+
 zip -r "$DIR/build/$addon_id.ankiaddon" \
   "manifest.json" \
   "__init__.py" \
