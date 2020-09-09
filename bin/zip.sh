@@ -18,4 +18,6 @@ zip -r "$DIR/build/$addon_id.ankiaddon" \
   "__init__.py" \
   "src/"*".py" \
   "web/"* \
+  "gui/"*".py" \
+  "gui/forms/"*".py" \
   "icons/"*
