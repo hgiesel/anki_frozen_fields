@@ -8,6 +8,21 @@ var ZeFrozenFields = {
     }
   },
 
+  toggleFrozen: (idx) => {
+    const flake = document.getElementById(`name${idx}`)
+
+    pycmd(`toggle_sticky:${idx}`, (isSticky) => {
+      ZeFrozenFields.setFrozen(flake, isSticky)
+    })
+  },
+
+  toggleFrozenCurrent: () => {
+    if (currentField) {
+      const currentId = Number(currentField.id.match(ZeFrozenFields.trailingNumberRegex))
+      ZeFrozenFields.toggleFrozen(currentId)
+    }
+  },
+
   trailingNumberRegex: /[0-9]+$/,
 
   loadFrozenIcons: () => {

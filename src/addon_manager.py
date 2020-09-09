@@ -3,6 +3,8 @@ from aqt import mw
 from ..gui.settings import Settings
 
 from .utils import (
+    toggle_field_keyword,
+    toggle_all_keyword,
     get_toggle_field,
     get_toggle_all,
 )
