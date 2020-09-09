@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Persistent Editor Settings</string>
+   <string>Ze Frozen Fields Settings</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="1">
