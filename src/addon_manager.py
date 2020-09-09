@@ -3,8 +3,8 @@ from aqt import mw
 from ..gui.settings import Settings
 
 from .utils import (
-    toggle_field_keyword,
-    toggle_all_keyword,
+    get_toggle_field,
+    get_toggle_all,
 )
 
 
@@ -18,8 +18,8 @@ def set_settings(
 def show_settings():
     dialog = Settings(mw, set_settings)
 
-    toggle_field_shortcut = mw.pm.profile.get(toggle_field_keyword, 'F9')
-    toggle_all_shortcut = mw.pm.profile.get(toggle_all_keyword, 'Shift+F9')
+    toggle_field_shortcut = get_toggle_field()
+    toggle_all_shortcut = get_toggle_all()
 
     dialog.setupUi(toggle_field_shortcut, toggle_all_shortcut)
     return dialog.exec_()

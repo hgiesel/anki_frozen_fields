@@ -8,6 +8,7 @@ from aqt.gui_hooks import (
 from aqt.editor import Editor
 from aqt.schema_change_tracker import ChangeTracker
 
+
 mw.addonManager.setWebExports(__name__, r'(web|icons)/.*\.(js|css|png)')
 
 def load_frozen_icon_js(webcontent, context):
