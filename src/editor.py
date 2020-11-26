@@ -10,21 +10,24 @@ def show_frozen_icons(js, note, editor):
     if not editor.addMode:
         return js
 
-    newjs = js + '; FrozenFields.loadIcons(); '
+    newjs = js + "; FrozenFields.loadIcons(); "
     return newjs
 
+
 def toggle_field(editor):
-    editor.web.eval('FrozenFields.toggleFrozenCurrent()')
+    editor.web.eval("FrozenFields.toggleFrozenCurrent()")
+
 
 def toggle_all(editor):
     model = editor.note.model()
 
-    any_sticky = any(map(lambda fld: fld['sticky'], model['flds']))
+    any_sticky = any(map(lambda fld: fld["sticky"], model["flds"]))
 
     # set all to False, if any sticky, otherwise True
-    for id, fld in enumerate(model['flds']):
-        if fld['sticky'] == any_sticky:
-            editor.web.eval(f'FrozenFields.toggleFrozen({id})')
+    for id, fld in enumerate(model["flds"]):
+        if fld["sticky"] == any_sticky:
+            editor.web.eval(f"FrozenFields.toggleFrozen({id})")
+
 
 def add_frozen_fields_shortcuts(cuts, editor):
     if not editor.addMode:
@@ -37,6 +40,7 @@ def add_frozen_fields_shortcuts(cuts, editor):
         (toggle_field_shortcut, lambda: toggle_field(editor)),
         (toggle_all_shortcut, lambda: toggle_all(editor), True),
     ])
+
 
 def init_editor():
     editor_did_init_shortcuts.append(add_frozen_fields_shortcuts)

@@ -21,7 +21,9 @@ def set_settings(
     mw.pm.profile[toggle_field_keyword] = toggle_field_shortcut
     mw.pm.profile[toggle_all_keyword] = toggle_all_shortcut
 
+
 addons_current: Optional[AddonsDialog] = None
+
 
 def save_addons_window(addons):
     global addons_current
@@ -36,6 +38,7 @@ def show_settings():
 
     dialog.setupUi(toggle_field_shortcut, toggle_all_shortcut)
     return dialog.exec_()
+
 
 def init_addon_manager():
     addons_dialog_will_show.append(save_addons_window)
