@@ -3,10 +3,8 @@ from aqt import QDialog, QLayout, QKeySequence
 from .forms.settings_ui import Ui_Settings
 
 class Settings(QDialog):
-    def __init__(self, mw, callback):
-        super().__init__(parent=mw)
-
-        self.mw = mw
+    def __init__(self, addons, callback):
+        super().__init__(parent=addons)
 
         self.ui = Ui_Settings()
         self.ui.setupUi(self)
