@@ -9,12 +9,12 @@ from .utils import (
 def show_frozen_icons(js, note, editor):
     newjs = js
     if editor.addMode:
-        newjs = js + '; ZeFrozenFields.loadFrozenIcons(); '
+        newjs = js + '; FrozenFields.loadIcons(); '
 
     return newjs
 
 def toggle_field(editor):
-    editor.web.eval('ZeFrozenFields.toggleFrozenCurrent()')
+    editor.web.eval('FrozenFields.toggleFrozenCurrent()')
 
 def toggle_all(editor):
     model = editor.note.model()
@@ -24,7 +24,7 @@ def toggle_all(editor):
     # set all to False, if any sticky, otherwise True
     for id, fld in enumerate(model['flds']):
         if fld['sticky'] == any_sticky:
-            editor.web.eval(f'ZeFrozenFields.toggleFrozen({id})')
+            editor.web.eval(f'FrozenFields.toggleFrozen({id})')
 
 def add_frozen_fields_shortcuts(cuts, editor):
     toggle_field_shortcut = get_toggle_field()

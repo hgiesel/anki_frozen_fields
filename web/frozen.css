@@ -1,28 +1,22 @@
-.fname {
-  pointer-events: none;
-}
-
-.fname::before {
+.fname .frozen-icon {
   display: inline-block;
   width: 14px;
   height: 14px;
 
   margin-right: 5px;
 
-  content: "  ";
   background-image: url('../icons/flake_black.png');
-  background-size: 100% 100%;
-  pointer-events: all;
+  background-size: cover;
 }
 
-.nightMode .fname::before {
+.nightMode .fname .frozen-icon {
   background-image: url('../icons/flake_white.png');
 }
 
-.night_mode .fname::before {
+.night_mode .fname .frozen-icon {
   background-image: url('../icons/flake_white.png');
 }
 
-.fname.is-frozen::before {
+.fname.is-frozen .frozen-icon {
   background-image: url('../icons/flake_blue.png');
 }
