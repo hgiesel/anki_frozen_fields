@@ -35,7 +35,7 @@ def add_frozen_fields_shortcuts(cuts, editor):
 
     cuts.extend([
         (toggle_field_shortcut, lambda: toggle_field(editor)),
-        (toggle_all_shortcut, lambda: toggle_all(editor)),
+        (toggle_all_shortcut, lambda: toggle_all(editor), True),
     ])
 
 def init_editor():
