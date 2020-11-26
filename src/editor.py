@@ -7,10 +7,10 @@ from .utils import (
 
 
 def show_frozen_icons(js, note, editor):
-    newjs = js
-    if editor.addMode:
-        newjs = js + '; FrozenFields.loadIcons(); '
+    if not editor.addMode:
+        return js
 
+    newjs = js + '; FrozenFields.loadIcons(); '
     return newjs
 
 def toggle_field(editor):
@@ -27,6 +27,9 @@ def toggle_all(editor):
             editor.web.eval(f'FrozenFields.toggleFrozen({id})')
 
 def add_frozen_fields_shortcuts(cuts, editor):
+    if not editor.addMode:
+        return
+
     toggle_field_shortcut = get_toggle_field()
     toggle_all_shortcut = get_toggle_all()
 
