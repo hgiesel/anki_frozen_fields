@@ -13,10 +13,6 @@
   background-image: url('../icons/flake_white.png');
 }
 
-.night_mode .fname .frozen-icon {
-  background-image: url('../icons/flake_white.png');
-}
-
 .fname.is-frozen .frozen-icon {
   background-image: url('../icons/flake_blue.png');
 }
