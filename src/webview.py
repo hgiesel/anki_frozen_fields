@@ -22,19 +22,25 @@ def load_frozen_icon_js(webcontent, context):
 
 
 def sticky_getter_and_setter(handled, message, context: Editor):
+    if message == "get_stickies":
+        model = context.note.model()
+        stickies = [fld["sticky"] for fld in model["flds"]]
+
+        return (True, stickies)
+
     cmd = message.split(":", 1)
 
-    if cmd[0] in ["toggle_sticky", "get_sticky"]:
+    if cmd[0] in ["toggle_sticky"]:
         model = context.note.model()
+        print(cmd)
         idx = int(cmd[1])
 
         fld = model["flds"][idx]
 
-        if cmd[0] == "toggle_sticky":
-            change_tracker = ChangeTracker(context.mw)
-            change_tracker.mark_basic()
+        change_tracker = ChangeTracker(context.mw)
+        change_tracker.mark_basic()
 
-            fld["sticky"] = not fld["sticky"]
+        fld["sticky"] = not fld["sticky"]
 
         return (True, fld["sticky"])
 

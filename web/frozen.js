@@ -25,26 +25,31 @@ var FrozenFields = {
 
   trailingNumberRegex: /[0-9]+$/,
 
+  makeFlake: (ord, setter) => {
+    const flake = document.createElement('i')
+    flake.classList.add('frozen-icon')
+    flake.addEventListener(
+      'click',
+      () => bridgeCommand(`toggle_sticky:${ord}`, setter),
+    )
+
+    return flake
+  },
+
   loadIcons: () => {
-    const fnames = document.querySelectorAll('.fname')
+    bridgeCommand(`get_stickies`, (stickies) => {
+      forEditorField(stickies, (field, initialSticky) => {
+        const setter = (isSticky) => FrozenFields.setFrozen(field.labelContainer, isSticky)
 
-    for (const fname of fnames) {
-      const idx = fname.id.match(FrozenFields.trailingNumberRegex)
+        if (!field.hasAttribute("has-frozen")) {
+          debugger
+          const flake = FrozenFields.makeFlake(field.getAttribute("ord"), setter)
+          field.labelContainer.insertBefore(flake, field.label)
+          field.setAttribute("has-frozen", "")
+        }
 
-      const flake = document.createElement('i')
-      flake.classList.add('frozen-icon')
-
-      fname.insertBefore(flake, fname.firstChild)
-
-      flake.addEventListener('click', () => {
-        pycmd(`toggle_sticky:${idx}`, (isSticky) => {
-          FrozenFields.setFrozen(fname, isSticky)
-        })
+        setter(initialSticky)
       })
-
-      pycmd(`get_sticky:${idx}`, (isSticky) => {
-        FrozenFields.setFrozen(fname, isSticky)
-      })
-    }
+    })
   },
 }
