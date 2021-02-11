@@ -1,29 +1,25 @@
 var FrozenFields = {
   setFrozen: (target, isSticky) => {
-    if (isSticky) {
-      target.classList.add('is-frozen')
-    }
-    else {
-      target.classList.remove('is-frozen')
-    }
+    target.classList.toggle('is-frozen', isSticky)
   },
 
-  toggleFrozen: (idx) => {
-    const fname = document.getElementById(`name${idx}`)
-
-    pycmd(`toggle_sticky:${idx}`, (isSticky) => {
-      FrozenFields.setFrozen(fname, isSticky)
+  toggleFrozenField: (editorField) => {
+    pycmd(`toggle_sticky:${editorField.getAttribute("ord")}`, (isSticky) => {
+      FrozenFields.setFrozen(editorField.labelContainer, isSticky)
     })
   },
 
-  toggleFrozenCurrent: () => {
-    if (currentField) {
-      const currentId = Number(currentField.id.match(FrozenFields.trailingNumberRegex))
-      FrozenFields.toggleFrozen(currentId)
-    }
+  toggleFrozen: (num) => {
+    FrozenFields.toggleFrozenField(getEditorField(num))
   },
 
-  trailingNumberRegex: /[0-9]+$/,
+  toggleFrozenCurrent: () => {
+    const currentField = getCurrentField()
+
+    if (currentField) {
+      FrozenFields.toggleFrozenField(currentField.parentElement)
+    }
+  },
 
   makeFlake: (ord, setter) => {
     const flake = document.createElement('i')

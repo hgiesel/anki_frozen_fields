@@ -32,7 +32,6 @@ def sticky_getter_and_setter(handled, message, context: Editor):
 
     if cmd[0] in ["toggle_sticky"]:
         model = context.note.model()
-        print(cmd)
         idx = int(cmd[1])
 
         fld = model["flds"][idx]
